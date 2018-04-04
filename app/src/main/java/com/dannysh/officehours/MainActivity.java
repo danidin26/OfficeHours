@@ -25,5 +25,6 @@ public class MainActivity extends Activity {
             activityIntent.setClass(this,StatsActivity.class);
         }
         startActivity(activityIntent);
+        finish();
     }
 }

@@ -14,7 +14,12 @@ public class Constants {
     public static final String ADDRESS_NAME = "addressName";
     public static final String DEF_ADDRESS_STRING = "";
     public static final String SHARED_PREF_NAME  = "settings";
+    public static final String USER_ADDRESS_INPUT = "usersAddressInput";
+    public static final String GEO_RESULT_MESSAGE = "geocodeResultMessage";
+    public static final String BROADCAST_GEOCODE_ACTION = "geoCodeAction";
 
-
-
+    public static final String DEF_GEO_RESULT_MESSAGE = "Internal Error, please try again later";
+    public static final String GEO_IO_ERROR = "Network Error, please try again later" ;
+    public static final String GEO_RESULT_INVALID_ADDRESS = "Invalid Address, please try again";
+    public static final String GEO_RESULT_SUCCESS = "Address Updated";
 }

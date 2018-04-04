@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dannysh.officehours.AddressActivity">
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/textViewHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPostalAddress"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/enter_address"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="166dp" />
+
+    <EditText
+        android:id="@+id/adressTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textViewHello"
+        android:layout_below="@+id/textViewHello"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        android:text="Enter your Office Address"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="166dp" />
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_above="@+id/button"
+        android:layout_below="@+id/adressTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
         android:text=""
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="447dp" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter your Office Address"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="7dp" />
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

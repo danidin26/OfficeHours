@@ -9,11 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddressActivity">
-
-        </activity>
+        <activity android:name=".AddressActivity"></activity>
+        <activity android:name=".StatsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
-            android:theme="@android:style/Theme.NoDisplay"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".GeoCodingService"></service>
     </application>
 
 </manifest>

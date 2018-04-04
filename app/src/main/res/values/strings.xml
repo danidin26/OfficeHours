@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Office Hours</string>
+    <string name="enter_address">Hello, please provide your office address</string>
 </resources>
