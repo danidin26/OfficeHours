@@ -20,14 +20,14 @@ public class AddressActivity extends AppCompatActivity {
 
     private ProgressBar spinner;
     Button button;
-    GeocodeStatusReciever geocodeStatusReciever;
+    GeocodeStatusReceiver geocodeStatusReciever;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
         //reciever for geocod process result
-        geocodeStatusReciever = new GeocodeStatusReciever();
+        geocodeStatusReciever = new GeocodeStatusReceiver();
         IntentFilter resultIntentFilter = new IntentFilter(Constants.BROADCAST_GEOCODE_ACTION);
         LocalBroadcastManager.getInstance(this).registerReceiver(geocodeStatusReciever,resultIntentFilter);
 
@@ -73,8 +73,8 @@ public class AddressActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(geocodeStatusReciever);
     }
 
-    public class GeocodeStatusReciever extends BroadcastReceiver{
-        public GeocodeStatusReciever(){}
+    public class GeocodeStatusReceiver extends BroadcastReceiver{
+        public GeocodeStatusReceiver(){}
 
         @Override
         public void onReceive(Context context, Intent intent) {

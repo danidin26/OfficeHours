@@ -9,7 +9,7 @@ import android.os.Build;
  */
 
 public class Constants {
-    public static final String LOC_LONG = "locationLongtitude" ;
+    public static final String LOC_LONG = "locationLongitude" ;
     public static final String LOC_LAT = "locationLatitude" ;
     public static final String ADDRESS_NAME = "addressName";
     public static final String DEF_ADDRESS_STRING = "";
@@ -17,7 +17,8 @@ public class Constants {
     public static final String USER_ADDRESS_INPUT = "usersAddressInput";
     public static final String GEO_RESULT_MESSAGE = "geocodeResultMessage";
     public static final String BROADCAST_GEOCODE_ACTION = "geoCodeAction";
-
+    public static final String GEOFENCE_BASE_ID = "dannysh.officehours";
+    public static final float GEOFENCE_RADIUS_METERS = 300;
     public static final String DEF_GEO_RESULT_MESSAGE = "Internal Error, please try again later";
     public static final String GEO_IO_ERROR = "Network Error, please try again later" ;
     public static final String GEO_RESULT_INVALID_ADDRESS = "Invalid Address, please try again";

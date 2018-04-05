@@ -30,6 +30,7 @@ public class GeoCodingService extends IntentService {
                    List<Address> lAddresses = gc.getFromLocationName(addressName,1);
                    if(lAddresses == null || lAddresses.size() == 0){
                        resultMessage = Constants.GEO_RESULT_INVALID_ADDRESS;
+                       LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(Constants.BROADCAST_GEOCODE_ACTION).putExtra(Constants.GEO_RESULT_MESSAGE,resultMessage));
                    }
                    else {
                        Address address = lAddresses.get(0);
@@ -39,17 +40,19 @@ public class GeoCodingService extends IntentService {
                        //address is valid - update naming in sp
                        //TODO consider saving the formated address
                        SharedPrefManager.setString(this,Constants.ADDRESS_NAME,address.getAddressLine(0));
+                       // call the geofencing service
+                       Intent fencingintent = new Intent(this,GeofenceInitService.class)
+                                              .putExtra(Constants.LOC_LAT , address.getLatitude())
+                                              .putExtra(Constants.LOC_LONG , address.getLongitude());
+                       LocalBroadcastManager.getInstance(this).sendBroadcast(fencingintent);
                    }
                 }
             }
             catch(IOException ex){
                 resultMessage = Constants.GEO_IO_ERROR;
+                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(Constants.BROADCAST_GEOCODE_ACTION).putExtra(Constants.GEO_RESULT_MESSAGE,resultMessage));
             }
             catch(Exception ex){
-
-            }
-            finally {
-                //send broadcast with the message that would be displayed in Toast in AddressActivity.
                 LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(Constants.BROADCAST_GEOCODE_ACTION).putExtra(Constants.GEO_RESULT_MESSAGE,resultMessage));
             }
         }
