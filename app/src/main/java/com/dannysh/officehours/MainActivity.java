@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         Intent activityIntent = new Intent();
         //check if there is location details in shared prefrences
-        if(SharedPrefManager.getString(this, Constants.ADDRESS_NAME,Constants.DEF_ADDRESS_STRING)==Constants.DEF_ADDRESS_STRING){
+        if(SharedPrefManager.getString(this, Constants.ADDRESS_NAME,Constants.DEF_ADDRESS_STRING).equals(Constants.DEF_ADDRESS_STRING)){
             //no address in app
             activityIntent.setClass(this,AddressActivity.class);
         }
