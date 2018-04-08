@@ -16,65 +16,83 @@
 
 package com.dannysh.officehours;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.v4.app.JobIntentService;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 
+import com.dannysh.officehours.Model.Event;
+import com.dannysh.officehours.Model.EventDataSource;
+import com.dannysh.officehours.Utils.Constants;
+import com.dannysh.officehours.Utils.SharedPrefManager;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
-/**
- * Listener for geofence transition changes.
- *
- * Receives geofence transition events from Location Services in the form of an Intent containing
- * the transition type and geofence id(s) that triggered the transition. Creates a notification
- * as the output.
- */
+
 public class GeofenceTransitionsJobIntentService extends JobIntentService {
 
-    private static final int JOB_ID = 573;
-
+    private static final int JOB_ID = 101;
 
     private static final String TAG = "GeofenceTransitionsIS";
 
-    private static final String CHANNEL_ID = "channel_01";
-
-    /**
-     * Convenience method for enqueuing work in to this service.
-     */
     public static void enqueueWork(Context context, Intent intent) {
         enqueueWork(context, GeofenceTransitionsJobIntentService.class, JOB_ID, intent);
     }
 
-    /**
-     * Handles incoming intents.
-     * @param intent sent by Location Services. This Intent is provided to Location
-     *               Services (inside a PendingIntent) when addGeofences() is called.
-     */
+
     @Override
     protected void onHandleWork(Intent intent) {
 
         GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
         if (geofencingEvent.hasError()) {
-//            String errorMessage = GeofenceErrorMessages.getErrorString(this,
-//                    geofencingEvent.getErrorCode());
-//            Log.e(TAG, errorMessage);
+            //reset enterence TS in SP
+            SharedPrefManager.setLong(getApplicationContext(), Constants.ENTRANCE_EVENT_TS, 0L);
             return;
+        } else {
+            //differ between enter and exist
+            int geofenceTransition = geofencingEvent.getGeofenceTransition();
+            long ts = System.currentTimeMillis();
+            // Test that the reported transition was of interest.
+            if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
+
+                SharedPrefManager.setLong(getApplicationContext(), Constants.ENTRANCE_EVENT_TS, ts);
+                return;
+            }
+            if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_EXIT) {
+                String date = getDateStringFromTs(ts);
+                double totalTime = getTsDifferences(getApplicationContext(), ts);
+                addEvent(new Event(date, totalTime));
+            }
+
         }
-        Log.d(TAG,"GeofenceTransitionsJobIntentService has been triggered with event : " + geofencingEvent.getGeofenceTransition());
+        Log.d(TAG, "GeofenceTransitionsJobIntentService has been triggered with event : " + geofencingEvent.getGeofenceTransition());
+    }
+
+    private double getTsDifferences(Context applicationContext, long exitTs) {
+        long entranceTs = SharedPrefManager.getLong(applicationContext, Constants.ENTRANCE_EVENT_TS, 0L);
+        LocalDateTime entrance = LocalDateTime.ofInstant(Instant.ofEpochMilli(entranceTs), TimeZone.getDefault().toZoneId());
+        LocalDateTime exit = LocalDateTime.ofInstant(Instant.ofEpochMilli(exitTs), TimeZone.getDefault().toZoneId());
+        long result = Duration.between(entrance, exit).toHours();
+        return result;
+    }
+
+    private String getDateStringFromTs(long ts) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(ts);
+        return DateFormat.format("dd/MM/yyyy", cal).toString();
+    }
+
+    private void addEvent(Event event) {
+        EventDataSource eventDataSource = new EventDataSource(getApplicationContext());
+        eventDataSource.addEvent(event);
     }
 
 }
