@@ -1,4 +1,4 @@
-package com.dannysh.officehours.View;
+package com.dannysh.officehours.stats;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.dannysh.officehours.Model.Event;
+import com.dannysh.officehours.model.Event;
 import com.dannysh.officehours.R;
 
 import java.util.List;
@@ -19,7 +19,6 @@ import java.util.List;
  */
 
 public class EventsAdapter extends ArrayAdapter<Event> {
-
 
     private static class ViewHolder {
         TextView date;

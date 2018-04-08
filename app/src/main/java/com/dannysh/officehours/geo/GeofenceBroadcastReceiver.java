@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dannysh.officehours;
+package com.dannysh.officehours.geo;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -40,6 +40,6 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Enqueues a JobIntentService passing the context and intent as parameters
         GeofenceTransitionsJobIntentService.enqueueWork(context, intent);
-        Log.d("GeofenceTransitionsIS","broadcast reciever called");
+        Log.d("GeofenceTransitionsIS", "broadcast reciever called");
     }
 }

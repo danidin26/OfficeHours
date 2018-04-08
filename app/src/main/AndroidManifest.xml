@@ -4,7 +4,8 @@
     package="com.dannysh.officehours">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.AddressActivity" />
+        <activity android:name=".address.AddressActivity" />
         <activity
-            android:name=".View.StatsActivity"
+            android:name=".stats.StatsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -27,12 +28,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".GeoCodingIntentService" />
-        <service android:name=".GeofenceTransitionsJobIntentService"
+        <service android:name=".geo.GeoCodingIntentService" />
+        <service
+            android:name=".geo.GeofenceTransitionsJobIntentService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <receiver
-            android:name=".GeofenceBroadcastReceiver"
+            android:name=".geo.GeofenceBroadcastReceiver"
             android:enabled="true"
             android:exported="true" />
     </application>

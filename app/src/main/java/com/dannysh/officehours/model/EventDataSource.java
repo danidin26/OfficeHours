@@ -1,4 +1,4 @@
-package com.dannysh.officehours.Model;
+package com.dannysh.officehours.model;
 
 import android.content.ContentValues;
 import android.content.Context;

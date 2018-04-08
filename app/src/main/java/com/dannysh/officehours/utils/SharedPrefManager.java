@@ -1,4 +1,4 @@
-package com.dannysh.officehours.Utils;
+package com.dannysh.officehours.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

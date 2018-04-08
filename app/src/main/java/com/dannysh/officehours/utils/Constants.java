@@ -1,8 +1,4 @@
-package com.dannysh.officehours.Utils;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build;
+package com.dannysh.officehours.utils;
 
 /**
  * Created by Danny on 01-Apr-18.
@@ -13,7 +9,7 @@ public class Constants {
     public static final String LOC_LAT = "locationLatitude" ;
     public static final String ADDRESS_NAME = "addressName";
     public static final String DEF_ADDRESS_STRING = "";
-    public static final String SHARED_PREF_NAME  = "settings";
+    public static final String SHARED_PREF_NAME  = "com.dannysh.officehours.settings";
     public static final String USER_ADDRESS_INPUT = "usersAddressInput";
     public static final String GEO_RESULT_MESSAGE = "geocodeResultMessage";
     public static final String BROADCAST_GEOCODE_ACTION = "geoCodeAction";

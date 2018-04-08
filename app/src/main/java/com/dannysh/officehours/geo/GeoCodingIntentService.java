@@ -1,4 +1,4 @@
-package com.dannysh.officehours;
+package com.dannysh.officehours.geo;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.location.Geocoder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.dannysh.officehours.Utils.Constants;
+import com.dannysh.officehours.utils.Constants;
 
 import java.io.IOException;
 import java.util.List;

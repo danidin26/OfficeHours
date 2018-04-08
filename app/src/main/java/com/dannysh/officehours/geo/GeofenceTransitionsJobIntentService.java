@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dannysh.officehours;
+package com.dannysh.officehours.geo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,10 +22,10 @@ import android.support.v4.app.JobIntentService;
 import android.text.format.DateFormat;
 import android.util.Log;
 
-import com.dannysh.officehours.Model.Event;
-import com.dannysh.officehours.Model.EventDataSource;
-import com.dannysh.officehours.Utils.Constants;
-import com.dannysh.officehours.Utils.SharedPrefManager;
+import com.dannysh.officehours.model.Event;
+import com.dannysh.officehours.model.EventDataSource;
+import com.dannysh.officehours.utils.Constants;
+import com.dannysh.officehours.utils.SharedPrefManager;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 
@@ -94,5 +94,4 @@ public class GeofenceTransitionsJobIntentService extends JobIntentService {
         EventDataSource eventDataSource = new EventDataSource(getApplicationContext());
         eventDataSource.addEvent(event);
     }
-
 }
