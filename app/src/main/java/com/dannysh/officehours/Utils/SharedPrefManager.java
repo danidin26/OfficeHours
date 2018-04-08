@@ -33,6 +33,14 @@ public class SharedPrefManager {
         saveChanges(getSettings(context).edit().putString(key, value));
     }
 
+    public static Long getLong(Context context, String key, Long defValue){
+        return getSettings(context).getLong(key, defValue);
+    }
+
+    public static void setLong(Context context, String key, Long value){
+        saveChanges(getSettings(context).edit().putLong(key, value));
+    }
+
     public static void setDouble(Context context, String key, Double value){
         saveChanges(getSettings(context).edit().putLong(key, Double.doubleToRawLongBits(value)));
     }

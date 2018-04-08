@@ -24,4 +24,5 @@ public class Constants {
     public static final String GEO_RESULT_INVALID_ADDRESS = "Invalid Address, please try again";
     public static final String GEO_RESULT_SUCCESS = "Address Updated";
     public static final String GEOCODE_SUCCESS = "geocodeSuccess";
+    public static final String ENTRANCE_EVENT_TS = "entranceTS";
 }

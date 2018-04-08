@@ -1,4 +1,4 @@
-package com.dannysh.officehours;
+package com.dannysh.officehours.View;
 
 import android.app.Activity;
 import android.content.Intent;
