@@ -28,7 +28,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 	protected void createEventsTable() {
 		String sql = "CREATE TABLE '" + SqliteHelper.TABLE_EVENTS
 				+ "' ( '_id' INTEGER PRIMARY KEY AUTOINCREMENT, "
-				+ "'event_date' TEXT," + "'event_total_time' REAL";
+				+ "'event_date' TEXT," + "'event_total_time' REAL)";
 		database.execSQL(sql);
 	}
 

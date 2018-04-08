@@ -6,16 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.dannysh.officehours.View.StatsActivity">
 
-       <ListView
-           android:id="@+id/eventsList"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintBottom_toTopOf="@+id/guideline" >
+    <ListView
+        android:id="@+id/eventsList"
+        android:layout_width="match_parent"
+        android:layout_height="531dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-       </ListView>
+    </ListView>
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -27,8 +27,11 @@
         android:id="@+id/bNewAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/eventsList"
         android:layout_centerHorizontal="true"
         android:text="@string/enterNewAddress"
-        />
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="539dp"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

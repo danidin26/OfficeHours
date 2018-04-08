@@ -19,12 +19,11 @@ public class EventDataSource {
 	protected SqliteHelper dbHelper;
 
 	public EventDataSource(Context context) {
-		this.context = context;
-		initSqliteHelper();
+		initSqliteHelper(context);
 		open();
 	}
 
-	protected void initSqliteHelper() {
+	protected void initSqliteHelper(Context context) {
 		dbHelper = new SqliteHelper(context);
 	}
 
